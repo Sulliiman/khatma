@@ -16,16 +16,17 @@ fetch(API + "/juz")
             if (item.done) {
                 div.innerHTML = `
                 <div class="juz-number">الجزء ${item.juz}</div>
-                <div class="done-text">${item.name} ✅</div>
+                <div class="done-text"> قرأه: ${item.name} ✔️</div>
               `;
             }
 
             // 🟡 مسجّل
             else if (item.name) {
+                div.classList.add("reserved");
                 div.innerHTML = `
                 <div class="juz-number">الجزء ${item.juz}</div>
-                <div>${item.name}</div>
-                <button onclick="markDone(${item.juz})">✔️ تم</button>
+                <div class= "reserved-text">صاحب الجزء: ${item.name}</div>
+                <button onclick="markDone(${item.juz})">✔️ اضغط هنا إذا أكملت الجزء</button>
               `;
             }
 
@@ -64,6 +65,7 @@ function register(juz) {
     })
         .then(res => {
             if (!res.ok) throw new Error();
+            alert("تم تسجيل الجزء بنجاح ");
             location.reload();
         })
         .catch(() => {
@@ -94,12 +96,18 @@ function markDone(juz) {
 }
 
 function resetAll() {
-  if (!confirm("هل أنت متأكد؟ سيتم تصفير جميع الأجزاء")) return;
+    const pass = prompt("أدخل كلمة المرور :");
+    if (pass !== "alhasan") {
+        alert("غير مصرح ❌");
+        return;
+    }
 
-  fetch(API + "/reset", {
-    method: "POST"
-  })
-  .then(() => location.reload())
-  .catch(() => alert("فشل التصفير"));
+    if (!confirm("هل أنت متأكد؟ سيتم تصفير جميع الأجزاء")) return;
+
+    fetch(API + "/reset", {
+        method: "POST"
+    })
+    .then(() => location.reload())
+    .catch(() => alert("فشل التصفير"));
 }
 

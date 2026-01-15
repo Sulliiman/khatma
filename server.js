@@ -13,7 +13,6 @@ const MONGO_URL = process.env.MONGO_URL;
 const client = new MongoClient(MONGO_URL);
 const PORT = process.env.PORT || 3000;
 
-
 let collection;
 let stats;
 
