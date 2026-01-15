@@ -1,4 +1,8 @@
-  body {
+ * {
+  box-sizing: border-box;
+}
+ 
+ body {
       font-family: 'Cairo', Tahoma, Arial;
       background: linear-gradient(135deg, #f8f9fa, #eef2f3);
       margin: 0;
@@ -115,6 +119,10 @@
     align-items: stretch;
     gap: 8px;
   }
+
+  body {
+  padding: 12px;
+}
 
   .juz-number {
     font-size: 15px;
