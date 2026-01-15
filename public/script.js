@@ -1,5 +1,5 @@
 // 👈 عدّل الرابط هذا فقط
-const API = "http://localhost:3000";
+const API = "https://khatma-api.onrender.com";
 
 // جلب الأجزاء
 fetch(API + "/juz")
