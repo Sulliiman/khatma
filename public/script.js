@@ -83,6 +83,9 @@ fetch(API + "/stats")
 
 // تعليم الجزء كمقروء
 function markDone(juz) {
+    const ok = confirm(`هل أنت متأكد من إكمال الجزء رقم ${juz}؟`);
+    if (!ok) return; 
+    
     fetch(API + "/juz/" + juz, {
         method: "POST"
     })
